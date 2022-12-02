@@ -10,3 +10,19 @@ My trello is public so you can see what's going on.
 
 Wish me luck boys.
 Updates will be posted.
+
+## Update 1
+Hello all!
+I have finally gotten the motivation to work on this project again, and I have made some key progress.
+I Added the following to the latest test build.
+> PNG Export
+> Canvas Scaling
+> Pixel placement via draw() and update()
+> Project File Table Structure
+Stuff planned for the future is as follows.
+> Color selection
+> Color Picking (Eyedropper)
+> Click+Drag to paint pixels
+> PNG Import
+> Project Export & Import
+Of course there are more, but those are the essentials for my next test build. Stay tuned.
