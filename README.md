@@ -11,7 +11,7 @@ My trello is public so you can see what's going on.
 Wish me luck boys.
 Updates will be posted.
 
-## Update 1
+## Update v3.0-test (first debug build)
 Hello all!
 I have finally gotten the motivation to work on this project again, and I have made some key progress.
 I Added the following to the latest test build.
@@ -32,7 +32,7 @@ Project Export & Import
 Of course there are more, but those are the essentials for my next test build. Stay tuned.
 Try it out here: https://github.com/Vaight/Sprixel/releases/tag/v3.0-test
 
-## Update 2 (12/2/2022)
+## Update v4.0-test (12/2/2022)
 Hello again!
 This update fixes many optimization issues relating to the draw() function lagging at high canvas sizes.
 ```
