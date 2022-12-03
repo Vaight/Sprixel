@@ -30,3 +30,16 @@ PNG Import
 Project Export & Import
 ```
 Of course there are more, but those are the essentials for my next test build. Stay tuned.
+Try it out here: https://github.com/Vaight/Sprixel/releases/tag/v3.0-test
+
+## Update 2 (12/2/2022)
+Hello again!
+This update fixes many optimization issues relating to the draw() function lagging at high canvas sizes.
+```
+Colors are now supported
+PNG export now prompts for a file name
+Adjustable canvas sizes
+canvas size cap removed
+```
+Soon i'll be adding PNG import, color picker, and drag draw.
+Try out v4.0-test here: *link*
