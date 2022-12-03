@@ -46,6 +46,9 @@ func _create_png(size : Vector2, name : String):
 		print(stored_pixels[_i])
 	img.unlock()
 	img.save_png(OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS) + name)
+	var imgtx = ImageTexture.new()
+	imgtx.create_from_image(img, 1)
+	$Display.texture = imgtx
 
 
 func _on_Button_pressed():

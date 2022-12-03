@@ -11,6 +11,12 @@ bg_color = Color( 1, 0, 0, 0 )
 bg_color = Color( 1, 0, 0, 0 )
 
 [resource]
+Button/colors/font_color = Color( 0.690196, 0.423529, 0.8, 1 )
+Button/colors/font_color_disabled = Color( 0.690196, 0.423529, 0.8, 1 )
+Button/colors/font_color_focus = Color( 0.690196, 0.423529, 0.8, 1 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 0.690196, 0.423529, 0.8, 1 )
+Button/fonts/font = ExtResource( 3 )
 Button/styles/disabled = ExtResource( 1 )
 Button/styles/focus = ExtResource( 1 )
 Button/styles/hover = ExtResource( 1 )
