@@ -42,4 +42,4 @@ Adjustable canvas sizes
 canvas size cap removed
 ```
 Soon i'll be adding PNG import, color picker, and drag draw.
-Try out v4.0-test here: *link*
+Try out v4.0-test here: https://github.com/Vaight/Sprixel/releases/tag/v4.0-test
