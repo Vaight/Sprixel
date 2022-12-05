@@ -1,14 +1,23 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://code/canvas editor/canvas_editor.gd" type="Script" id=1]
 [ext_resource path="res://code/camera_controller.gd" type="Script" id=2]
 [ext_resource path="res://sprites/canvas/selector.png" type="Texture" id=3]
 [ext_resource path="res://sprites/canvas/background.png" type="Texture" id=4]
-[ext_resource path="res://sprites/ui/eye_dropper.png" type="Texture" id=5]
-[ext_resource path="res://Shaders/invert.tres" type="Shader" id=6]
+[ext_resource path="res://themes/main_ui_theme.tres" type="Theme" id=5]
+[ext_resource path="res://shaders/invert.tres" type="Shader" id=6]
 [ext_resource path="res://code/ui/download_ui_controller.gd" type="Script" id=7]
 [ext_resource path="res://code/ui/new_canvas_controller.gd" type="Script" id=8]
 [ext_resource path="res://themes/Development/development_theme.tres" type="Theme" id=9]
+[ext_resource path="res://shaders/invert_material.tres" type="Material" id=10]
+[ext_resource path="res://code/canvas editor/color_picker.gd" type="Script" id=11]
+[ext_resource path="res://themes/background_color_for_picker.tres" type="StyleBox" id=12]
+[ext_resource path="res://themes/dropdown.tres" type="StyleBox" id=13]
+[ext_resource path="res://sprites/ui/icons/pixel_brush_icon.png" type="Texture" id=14]
+[ext_resource path="res://sprites/ui/icons/2x2.png" type="Texture" id=15]
+[ext_resource path="res://sprites/ui/icons/3x3.png" type="Texture" id=16]
+[ext_resource path="res://sprites/ui/icons/4x4.png" type="Texture" id=17]
+[ext_resource path="res://code/ui/brush_menu.gd" type="Script" id=18]
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 6 )
@@ -48,37 +57,41 @@ material = SubResource( 4 )
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 2.0
-margin_top = -14.0
-margin_right = 258.0
-text = "v4-test      image based canvas renderer"
+margin_top = -32.0
+margin_right = 300.0
+margin_bottom = -1.0
+theme = ExtResource( 5 )
+text = "v4.1-TEST     BaseGUI and RGBA
+Font is original work and was created for this program."
 
-[node name="ExportImage" type="Button" parent="CanvasLayer"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 95.0
-margin_bottom = 32.0
-rect_pivot_offset = Vector2( -206, 36 )
-theme = ExtResource( 9 )
+[node name="ExportImage" type="Button" parent="CanvasLayer" groups=["ui_disables_drawing"]]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 77.0
+margin_bottom = 23.0
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 5 )
 text = "Save PNG"
 
-[node name="NewCanvas" type="Button" parent="CanvasLayer"]
-margin_left = 5.0
-margin_top = 95.0
-margin_right = 95.0
-margin_bottom = 122.0
-rect_pivot_offset = Vector2( -206, 36 )
-theme = ExtResource( 9 )
+[node name="SetBrush" type="Button" parent="CanvasLayer" groups=["ui_disables_drawing"]]
+margin_left = 380.0
+margin_top = 2.0
+margin_right = 473.0
+margin_bottom = 23.0
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 5 )
+text = "Set Brush"
+
+[node name="NewCanvas" type="Button" parent="CanvasLayer" groups=["ui_disables_drawing"]]
+margin_left = 156.0
+margin_top = 2.0
+margin_right = 266.0
+margin_bottom = 23.0
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 5 )
 text = "New Canvas"
 
-[node name="LoadImage" type="Button" parent="CanvasLayer"]
-margin_left = 5.0
-margin_top = 35.0
-margin_right = 95.0
-margin_bottom = 62.0
-theme = ExtResource( 9 )
-text = "Load PNG"
-
-[node name="Download" type="Panel" parent="CanvasLayer"]
+[node name="Download" type="Panel" parent="CanvasLayer" groups=["ui_disables_drawing"]]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
@@ -91,7 +104,7 @@ margin_bottom = 61.5
 theme = ExtResource( 9 )
 script = ExtResource( 7 )
 
-[node name="Confirm" type="Button" parent="CanvasLayer/Download"]
+[node name="Confirm" type="Button" parent="CanvasLayer/Download" groups=["ui_disables_drawing"]]
 margin_left = 136.0
 margin_top = 95.0
 margin_right = 194.0
@@ -99,7 +112,7 @@ margin_bottom = 115.0
 theme = ExtResource( 9 )
 text = "Save"
 
-[node name="NameEdit" type="LineEdit" parent="CanvasLayer/Download/Confirm"]
+[node name="NameEdit" type="LineEdit" parent="CanvasLayer/Download/Confirm" groups=["ui_disables_drawing"]]
 margin_left = -130.0
 margin_top = -2.0
 margin_right = -5.0
@@ -107,7 +120,7 @@ margin_bottom = 22.0
 theme = ExtResource( 9 )
 placeholder_text = "Untitled Image"
 
-[node name="Close" type="Button" parent="CanvasLayer/Download"]
+[node name="Close" type="Button" parent="CanvasLayer/Download" groups=["ui_disables_drawing"]]
 margin_left = 177.0
 margin_top = 4.0
 margin_right = 196.0
@@ -115,7 +128,7 @@ margin_bottom = 24.0
 theme = ExtResource( 9 )
 text = "x"
 
-[node name="Label" type="Label" parent="CanvasLayer/Download"]
+[node name="Label" type="Label" parent="CanvasLayer/Download" groups=["ui_disables_drawing"]]
 margin_left = 6.0
 margin_top = 27.0
 margin_right = 196.0
@@ -124,70 +137,213 @@ theme = ExtResource( 9 )
 text = "You are about to export the project as a PNG to your computer's \"Downloads\" folder. Enter a name below."
 autowrap = true
 
-[node name="NewCanvasPopup" type="Panel" parent="CanvasLayer"]
+[node name="NewCanvasPopup" type="Panel" parent="CanvasLayer" groups=["ui_disables_drawing"]]
 visible = false
-margin_left = 97.0
-margin_top = 95.0
-margin_right = 315.0
-margin_bottom = 122.0
-theme = ExtResource( 9 )
+margin_left = 156.0
+margin_top = 33.0
+margin_right = 266.0
+margin_bottom = 84.0
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 5 )
+custom_styles/panel = ExtResource( 13 )
 script = ExtResource( 8 )
 
-[node name="Confirm" type="Button" parent="CanvasLayer/NewCanvasPopup"]
-margin_left = 157.0
-margin_top = 3.0
-margin_right = 215.0
-margin_bottom = 24.0
-theme = ExtResource( 9 )
+[node name="Confirm" type="Button" parent="CanvasLayer/NewCanvasPopup" groups=["ui_disables_drawing"]]
+margin_left = 50.0
+margin_top = 28.0
+margin_right = 108.0
+margin_bottom = 49.0
+theme = ExtResource( 5 )
 text = "Create"
 
-[node name="XPixels" type="LineEdit" parent="CanvasLayer/NewCanvasPopup/Confirm"]
-margin_left = -131.0
-margin_top = -2.0
-margin_right = -68.0
-margin_bottom = 23.0
+[node name="XPixels" type="LineEdit" parent="CanvasLayer/NewCanvasPopup/Confirm" groups=["ui_disables_drawing"]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -71.5
+margin_top = -39.5
+margin_right = 3.5
+margin_bottom = -9.5
+rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 15, 13 )
-theme = ExtResource( 9 )
+theme = ExtResource( 5 )
 align = 1
-placeholder_text = "X Size"
+placeholder_text = "X"
 
-[node name="YPixels" type="LineEdit" parent="CanvasLayer/NewCanvasPopup/Confirm"]
-margin_left = -67.0
-margin_top = -2.0
-margin_right = -4.0
-margin_bottom = 23.0
+[node name="YPixels" type="LineEdit" parent="CanvasLayer/NewCanvasPopup/Confirm" groups=["ui_disables_drawing"]]
+margin_left = -2.5
+margin_top = -29.5
+margin_right = 72.5
+margin_bottom = 0.5
+rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 15, 13 )
-theme = ExtResource( 9 )
+theme = ExtResource( 5 )
 align = 1
-placeholder_text = "Y Size"
+placeholder_text = "Y"
 
-[node name="Close" type="Button" parent="CanvasLayer/NewCanvasPopup"]
-margin_left = 4.0
+[node name="Close" type="Button" parent="CanvasLayer/NewCanvasPopup" groups=["ui_disables_drawing"]]
+margin_left = 2.0
+margin_top = 27.5
+margin_right = 49.0
+margin_bottom = 48.5
+theme = ExtResource( 5 )
+text = "Cancel"
+
+[node name="BrushMenu" type="Panel" parent="CanvasLayer" groups=["ui_disables_drawing"]]
+visible = false
+margin_left = 380.0
+margin_top = 34.0
+margin_right = 473.0
+margin_bottom = 155.0
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 5 )
+custom_styles/panel = ExtResource( 13 )
+script = ExtResource( 18 )
+
+[node name="Pixel" type="Button" parent="CanvasLayer/BrushMenu" groups=["ui_disables_drawing"]]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 91.0
+margin_bottom = 25.0
+theme = ExtResource( 5 )
+text = "Pixel"
+icon = ExtResource( 14 )
+align = 2
+
+[node name="2x2" type="Button" parent="CanvasLayer/BrushMenu" groups=["ui_disables_drawing"]]
+margin_left = 2.0
+margin_top = 26.0
+margin_right = 91.0
+margin_bottom = 49.0
+theme = ExtResource( 5 )
+text = "2 by 2"
+icon = ExtResource( 15 )
+align = 2
+
+[node name="3x3" type="Button" parent="CanvasLayer/BrushMenu" groups=["ui_disables_drawing"]]
+margin_left = 2.0
+margin_top = 50.0
+margin_right = 91.0
+margin_bottom = 73.0
+theme = ExtResource( 5 )
+text = "3 by 3"
+icon = ExtResource( 16 )
+align = 2
+
+[node name="4x4" type="Button" parent="CanvasLayer/BrushMenu" groups=["ui_disables_drawing"]]
+margin_left = 2.0
+margin_top = 74.0
+margin_right = 91.0
+margin_bottom = 97.0
+theme = ExtResource( 5 )
+text = "4 by 4"
+icon = ExtResource( 17 )
+align = 2
+
+[node name="Close" type="Button" parent="CanvasLayer/BrushMenu" groups=["ui_disables_drawing"]]
+margin_left = 2.0
+margin_top = 98.0
+margin_right = 91.0
+margin_bottom = 119.0
+theme = ExtResource( 5 )
+text = "Close"
+
+[node name="ColorSelector" type="Panel" parent="CanvasLayer" groups=["ui_disables_drawing"]]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -213.0
+margin_top = -143.0
+margin_right = -109.0
+margin_bottom = -74.0
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 5 )
+custom_styles/panel = ExtResource( 12 )
+script = ExtResource( 11 )
+
+[node name="Red" type="HSlider" parent="CanvasLayer/ColorSelector" groups=["ui_disables_drawing"]]
+material = ExtResource( 10 )
+margin_left = 16.5
 margin_top = 3.0
-margin_right = 23.0
-margin_bottom = 24.0
-theme = ExtResource( 9 )
-text = "x"
+margin_right = 64.5
+margin_bottom = 19.0
+theme = ExtResource( 5 )
+max_value = 1.0
+step = 0.05
 
-[node name="Color" type="LineEdit" parent="CanvasLayer"]
-margin_left = 5.0
-margin_top = 65.0
-margin_right = 95.0
-margin_bottom = 92.0
-theme = ExtResource( 9 )
-align = 1
-placeholder_text = "#000000"
+[node name="Green" type="HSlider" parent="CanvasLayer/ColorSelector" groups=["ui_disables_drawing"]]
+material = ExtResource( 10 )
+margin_left = 16.5
+margin_top = 19.0
+margin_right = 64.5
+margin_bottom = 35.0
+theme = ExtResource( 5 )
+max_value = 1.0
+step = 0.05
 
-[node name="Eyedrop" type="Button" parent="CanvasLayer/Color"]
-margin_left = 93.0
-margin_right = 120.0
-margin_bottom = 27.0
-icon = ExtResource( 5 )
-expand_icon = true
+[node name="Blue" type="HSlider" parent="CanvasLayer/ColorSelector" groups=["ui_disables_drawing"]]
+material = ExtResource( 10 )
+margin_left = 16.5
+margin_top = 35.0
+margin_right = 64.5
+margin_bottom = 51.0
+theme = ExtResource( 5 )
+max_value = 1.0
+step = 0.05
 
+[node name="Alpha" type="HSlider" parent="CanvasLayer/ColorSelector" groups=["ui_disables_drawing"]]
+material = ExtResource( 10 )
+margin_left = 16.5
+margin_top = 51.0
+margin_right = 64.5
+margin_bottom = 67.0
+theme = ExtResource( 5 )
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorSelector" groups=["ui_disables_drawing"]]
+material = ExtResource( 10 )
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 16.0
+margin_bottom = 70.0
+theme = ExtResource( 5 )
+text = "R
+G
+B
+A"
+
+[node name="Value" type="Label" parent="CanvasLayer/ColorSelector" groups=["ui_disables_drawing"]]
+material = ExtResource( 10 )
+margin_left = 72.0
+margin_top = 2.0
+margin_right = 101.0
+margin_bottom = 70.0
+theme = ExtResource( 5 )
+text = "0
+0
+0
+1"
+
+[connection signal="pressed" from="CanvasLayer/SetBrush" to="CanvasLayer/BrushMenu" method="_open_popup"]
 [connection signal="pressed" from="CanvasLayer/NewCanvas" to="CanvasLayer/NewCanvasPopup" method="_on_NewCanvas_pressed"]
 [connection signal="pressed" from="CanvasLayer/Download/Confirm" to="Canvas" method="_on_Confirm_pressed"]
 [connection signal="pressed" from="CanvasLayer/Download/Close" to="CanvasLayer/Download" method="_on_Close_pressed"]
 [connection signal="create_new_canvas" from="CanvasLayer/NewCanvasPopup" to="Canvas" method="_on_NewCanvasPopup_create_new_canvas"]
 [connection signal="pressed" from="CanvasLayer/NewCanvasPopup/Confirm" to="CanvasLayer/NewCanvasPopup" method="_on_Confirm_pressed"]
 [connection signal="pressed" from="CanvasLayer/NewCanvasPopup/Close" to="CanvasLayer/NewCanvasPopup" method="_on_Close_pressed"]
+[connection signal="brush_change" from="CanvasLayer/BrushMenu" to="Canvas" method="_on_BrushMenu_brush_change"]
+[connection signal="pressed" from="CanvasLayer/BrushMenu/Pixel" to="CanvasLayer/BrushMenu" method="_on_Pixel_pressed"]
+[connection signal="pressed" from="CanvasLayer/BrushMenu/2x2" to="CanvasLayer/BrushMenu" method="_on_2x2_pressed"]
+[connection signal="pressed" from="CanvasLayer/BrushMenu/3x3" to="CanvasLayer/BrushMenu" method="_on_3x3_pressed"]
+[connection signal="pressed" from="CanvasLayer/BrushMenu/4x4" to="CanvasLayer/BrushMenu" method="_on_4x4_pressed"]
+[connection signal="pressed" from="CanvasLayer/BrushMenu/Close" to="CanvasLayer/BrushMenu" method="_on_Close_pressed"]
+[connection signal="color_changed" from="CanvasLayer/ColorSelector" to="Canvas" method="_on_ColorSelector_color_changed"]
+[connection signal="color_changed" from="CanvasLayer/ColorSelector" to="CanvasLayer/ColorSelector" method="_on_ColorSelector_color_changed"]
+[connection signal="value_changed" from="CanvasLayer/ColorSelector/Red" to="CanvasLayer/ColorSelector" method="_on_Red_changed"]
+[connection signal="value_changed" from="CanvasLayer/ColorSelector/Green" to="CanvasLayer/ColorSelector" method="_on_Green_changed"]
+[connection signal="value_changed" from="CanvasLayer/ColorSelector/Blue" to="CanvasLayer/ColorSelector" method="_on_Blue_changed"]
+[connection signal="value_changed" from="CanvasLayer/ColorSelector/Alpha" to="CanvasLayer/ColorSelector" method="_on_Alpha_changed"]

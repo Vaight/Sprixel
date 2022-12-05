@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://sprites/ui/grid.png" type="Texture" id=5]
+[ext_resource path="res://sprites/ui/legacy/grid.png" type="Texture" id=5]
 [ext_resource path="res://code/camera_controller.gd" type="Script" id=7]
 [ext_resource path="res://code/generate_canvas.gd" type="Script" id=9]
 
