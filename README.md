@@ -43,3 +43,18 @@ canvas size cap removed
 ```
 Soon i'll be adding PNG import, color picker, and drag draw.
 Try out v4.0-test here: https://github.com/Vaight/Sprixel/releases/tag/v4.0-test
+
+## Update v4.1-test (12/4/2022)
+I have a cool feature update done.
+I fixed a few bugs and addeds a ton of very inportant features
+```
+RGBA Color Picker
+Some Example Brush Modes
+DRAG DRAWING!
+Basic Custom In-House font and UI assets
+More Camera Functions (Hold down middle mouse to pan)
+Many Bug Fixes Regarding the UI not stopping Canvas Input.
+
+```
+Try it out here: https://github.com/Vaight/Sprixel/releases/tag/v4.1-test
+
