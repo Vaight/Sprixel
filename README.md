@@ -46,7 +46,7 @@ Try out v4.0-test here: https://github.com/Vaight/Sprixel/releases/tag/v4.0-test
 
 ## Update v4.1-test (12/4/2022)
 I have a cool feature update done.
-I fixed a few bugs and addeds a ton of very inportant features
+I fixed a few bugs and added a ton of very inportant features
 ```
 RGBA Color Picker
 Some Example Brush Modes
